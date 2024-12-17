@@ -1,0 +1,11 @@
+*.psd filter=lfs diff=lfs merge=lfs -text
+notebooks/1-ood_perf_rob_visualization.ipynb filter=lfs diff=lfs merge=lfs -text
+notebooks/3-hdae_statistics.ipynb filter=lfs diff=lfs merge=lfs -text
+models/imagenet100/state_dicts/resnet50_pgd_linf_4_pgd_l2_1200_jpeg_linf_0.125_stadv_0.05_recoloradv_0.06_random.pt filter=lfs diff=lfs merge=lfs -text
+models/cifar10/state_dicts/resnet50_pgd_linf_8_pgd_l2_1_stadv_0.05_recoloradv_0.06_average.pt filter=lfs diff=lfs merge=lfs -text
+models/cifar10/state_dicts/resnet50.pt filter=lfs diff=lfs merge=lfs -text
+models/cifar10/state_dicts/resnet50_pat_self_0.5.pt filter=lfs diff=lfs merge=lfs -text
+models/imagenet100/state_dicts/resnet50_pat_alexnet_0.5.pt filter=lfs diff=lfs merge=lfs -text
+models/cifar10/state_dicts/resnet50_da_all_199.pt filter=lfs diff=lfs merge=lfs -text
+models/imagenet100/state_dicts/resnet50.pt filter=lfs diff=lfs merge=lfs -text
+models/imagenet100/state_dicts/resnet50_da_all_115.pt filter=lfs diff=lfs merge=lfs -text

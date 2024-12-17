@@ -1,0 +1,18 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+# Jupyter Notebook
+.ipynb_checkpoints
+test.ipynb
+test*.ipynb
+# IPython
+profile_default/
+ipython_config.py
+
+# models/cifar10/state_dicts/
+# models/imagenet100/state_dicts/
+# dataset/
+results/cifar10/
+results/imagenet100/
+intermediate_results/
+images/
+.vscode/
