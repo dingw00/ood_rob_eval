@@ -1,0 +1,92 @@
+benchmark:
+    CIFAR10:
+        num_classes: 10
+        img_size: 32
+        ood_datasets:
+            - Textures
+            - SVHN
+            - LSUN-C
+            - LSUN-R
+            - iSUN
+            - Places365
+        model:
+            wrn_40_2:
+                NT: wrn_40_2.pt 
+                DA: wrn_40_2_default_aug.pt 
+                AT: wrn_40_2_Hendrycks2020AugMix.pt 
+                PAT: wrn_40_2_pat_0.25_epoch_199.pt
+            resnet50: 
+                NT: resnet50.pt
+                DA: resnet50_da_all_199.pt
+                AT : resnet50_pgd_linf_8_pgd_l2_1_stadv_0.05_recoloradv_0.06_average.pt
+                PAT: resnet50_pat_self_0.5.pt
+        
+    Imagenet100:
+        num_classes: 100
+        img_size: 224
+        ood_datasets:
+            - NINCO
+            - Textures
+            - iNaturalist
+            - SUN
+            - Places
+        model:
+            resnet50:
+                NT: resnet50.pt
+                DA: resnet50_da_all_115.pt
+                AT: resnet50_pgd_linf_4_pgd_l2_1200_jpeg_linf_0.125_stadv_0.05_recoloradv_0.06_random.pt
+                PAT: resnet50_pat_alexnet_0.5.pt
+    
+    Imagenet1k:
+        num_classes: 1000
+        img_size: 224
+        # mean: [0.485, 0.456, 0.406]
+        # std: [0.229, 0.224, 0.225]
+        ood_datasets:
+            - NINCO
+            - Textures
+            - iNaturalist
+        model:
+            swin:
+                NT: swin_base_patch4_window7_224
+            deit:
+                NT: deit_base_patch16_224
+            vit:
+                NT: vit_b_16 # https://pytorch.org/vision/main/models/generated/torchvision.models.vit_b_16.html#torchvision.models.ViT_B_16_Weights
+
+score_functions:
+    - Entropy
+    - ViM
+    # - Mahalanobis+ODIN
+    - Mahalanobis
+    - KLMatching
+    - SHE
+    - MSP
+    - EnergyBased
+    - MaxLogit
+    - ODIN
+    - DICE
+    # - RMD
+
+perturb_functions:
+    - rotation
+    - translation
+    - scale
+    - hue
+    - saturation
+    - bright_contrast
+    - blur  
+    - Linf
+    - L2
+
+rand_seed: 0
+
+batch_size: 200
+n_seeds: 1000
+n_sampling: 1000
+n_randomized_smoothing: 50
+severity: all
+eval_severity: True # False
+
+datadir: dataset/
+device: cpu # cpu, cuda
