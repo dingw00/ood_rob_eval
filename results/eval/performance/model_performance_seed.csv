@@ -1,0 +1,13 @@
+benchmark,model,variant,accuracy
+CIFAR10,wrn_40_2,NT,94.7
+CIFAR10,wrn_40_2,DA,95.5
+CIFAR10,wrn_40_2,AT,95.19999999999999
+CIFAR10,wrn_40_2,PAT,85.9
+CIFAR10,resnet50,NT,95.0
+CIFAR10,resnet50,DA,96.5
+CIFAR10,resnet50,AT,86.8
+CIFAR10,resnet50,PAT,82.5
+Imagenet100,resnet50,NT,89.9
+Imagenet100,resnet50,DA,88.8
+Imagenet100,resnet50,AT,78.3
+Imagenet100,resnet50,PAT,76.0

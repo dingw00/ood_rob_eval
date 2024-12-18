@@ -9,3 +9,4 @@ models/imagenet100/state_dicts/resnet50_pat_alexnet_0.5.pt filter=lfs diff=lfs m
 models/cifar10/state_dicts/resnet50_da_all_199.pt filter=lfs diff=lfs merge=lfs -text
 models/imagenet100/state_dicts/resnet50.pt filter=lfs diff=lfs merge=lfs -text
 models/imagenet100/state_dicts/resnet50_da_all_115.pt filter=lfs diff=lfs merge=lfs -text
+results/ filter=lfs diff=lfs merge=lfs -text

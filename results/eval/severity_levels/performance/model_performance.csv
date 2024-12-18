@@ -1,0 +1,5 @@
+benchmark,model,variant,accuracy
+CIFAR10,wrn_40_2,NT,94.73
+CIFAR10,wrn_40_2,DA,95.26
+CIFAR10,wrn_40_2,AT,95.08
+CIFAR10,wrn_40_2,PAT,84.95
