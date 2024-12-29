@@ -5,6 +5,7 @@ from utils.test_utils import setup_seed
 import torchvision.transforms as tf 
 import os
 
+
 # Special transforms for ImageNet(s)
 TEST_TRANSFORMS_IMAGENET = lambda size: tf.Compose([
         tf.Resize(256),
@@ -31,6 +32,7 @@ TRAIN_TRANSFORMS_AWA2 = lambda size: tf.Compose([
                                     tf.Resize((size, size)),               # Resize image to 224x224
                                     tf.ToTensor(),                       # Convert PIL Image to tensor
                                 ])
+
 
 # Data Augmentation defaults
 TEST_TRANSFORMS_DEFAULT = lambda size: tf.Compose([
@@ -59,23 +61,21 @@ class SubsetImageFolder(tv.datasets.ImageFolder):
             print("Image net samples:", len(self.samples))
 
 
-def load_dataset(data_dir, dataset_name, img_size, benchmark=None, batch_size=1, split=None, 
+def load_dataset(data_dir, dataset_name, benchmark, batch_size=1, split=None, 
                  shuffle=False, n_workers=4, normalize=False, mean=None, std=None,
                  pin_memory=True, model_name=None):
 
     if benchmark == "CIFAR10":
-        tfs = TEST_TRANSFORMS_DEFAULT(img_size)
+        tfs = TEST_TRANSFORMS_DEFAULT(32)
     elif benchmark == "Imagenet100":
-        tfs = TEST_TRANSFORMS_IMAGENET(img_size)
+        tfs = TEST_TRANSFORMS_IMAGENET(224)
     elif benchmark == "Imagenet1k":
         if model_name in ["swin", "deit"]:
-            tfs = TEST_TRANSFORMS_AWA2(img_size)
+            tfs = TEST_TRANSFORMS_AWA2(224)
         else:
-            tfs = TEST_TRANSFORMS_IMAGENET(img_size)
+            tfs = TEST_TRANSFORMS_IMAGENET(224)
     elif benchmark == "AwA2":
-        tfs = TEST_TRANSFORMS_AWA2(img_size) # 299
-    else:
-        tfs = TEST_TRANSFORMS_DEFAULT(img_size)
+        tfs = TEST_TRANSFORMS_AWA2(299)
     
     if ("Imagenet" in dataset_name) and (split == "test"):
         split = "val"
@@ -88,10 +88,10 @@ def load_dataset(data_dir, dataset_name, img_size, benchmark=None, batch_size=1,
     if dataset is None:
         dataset = load_dataset_from_folder(data_dir, dataset_name, transform=tfs, 
                                            split=split)
-    
     if (dataset_name == "Imagenet1k") and (split == "train"):
-        subset_indices = torch.randperm(len(dataset))[:50000]
+        subset_indices = torch.randperm(len(dataset))[:10000]
         dataset = Subset(dataset, subset_indices)
+        pin_memory = False
 
     dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle,
                             num_workers=n_workers, pin_memory=pin_memory, drop_last=False)
