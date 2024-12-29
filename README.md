@@ -42,8 +42,9 @@ To set up the configuration, please run:
 make config
 ```
 This will start the tkinter GUI where you can select several customized options and save them in the yaml file for OoD robustness test and evaluation.
+<p align="center" width="100%">
 <img src=".images/tkinter.png" alt="drawing" width="500"/>
-
+</p>
 It is also possibe to customize the experiment settings directly by modifyig the default configuration file `config.yaml` before running the experiments.
 
 We provide several options to select from: [3 benchmarks](#datasets), [a variety of DNN models](#models), [16 OoD detectors](#ood-detectors) and [9 types of functional perturbations of 5 severities](#perturbations).
