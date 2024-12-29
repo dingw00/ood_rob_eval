@@ -1,3 +1,0 @@
-[submodule "dataset"]
-	path = dataset
-	url = git@gricad-gitlab.univ-grenoble-alpes.fr:dingw/dataset.git

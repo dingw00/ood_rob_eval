@@ -28,25 +28,27 @@ Our robustness benchmark is based on pip and virtural environment, which require
 ### Prerequisites
 To setup the virtual environment, just clone our latest version:
 ```
-git clone https://gricad-gitlab.univ-grenoble-alpes.fr/dingw/ood_robustness_eva.git
+git clone https://github.com/dingw00/ood_rob_eval.git
 ```
-Go to the root directory, and run:
+To prepare the virtual environment, just go to the root directory and run:
 ```
 make build
 ```
-To prepare the datasets, please run:
-```
-git submodule update --remote --init
-```
-or manually [download](https://figshare.com/s/28c0d4ffa971b1445ede) and save them in the `dataset` directory.
+To prepare the datasets, please [download](https://figshare.com/s/28c0d4ffa971b1445ede) and save them in the `dataset` directory.
 
 ### Setup
-It is possibe to customize the experiment settings by modifyig the configuration file `config.yaml` before running the experiments.
+To set up the configuration, please run:
+```
+make config
+```
+This will start the tkinter GUI where you can select several customized options and save them in the yaml file for OoD robustness test and evaluation.
+<img src=".images/tkinter.png" alt="drawing" width="500"/>
 
-We provide several options to select from: 2 benchmarks, a variety of DNN models, 12 OoD detectors and 9 types of functional perturbations of 5 severities.
+It is also possibe to customize the experiment settings directly by modifyig the default configuration file `config.yaml` before running the experiments.
 
+We provide several options to select from: [3 benchmarks](#datasets), [a variety of DNN models](#models), [16 OoD detectors](#ood-detectors) and [9 types of functional perturbations of 5 severities](#perturbations).
 
-## 🚀 Deployment <a name = "deployment"></a>
+## 🚀 Deployment
 
 ### OoD Test
 
@@ -235,7 +237,7 @@ Our benchmark is implemented with a variety of SoTA OoD detectors based on [Pyto
   </tr>
 </table>
 
-### Datasets
+### Datasets <a name = "datasets"></a>
  On each benchmark, the ID and OoD datasets for OoD robustness test are listed as follows.
 <details open>
   <summary><b>Benchmark: CIFAR10</b></summary>
@@ -272,6 +274,20 @@ Our benchmark is implemented with a variety of SoTA OoD detectors based on [Pyto
   </ul>
 </details>
 
+<details open>
+  <summary><b>Benchmark: ImageNet-1k</b></summary>
+  <ul>
+    <li>ID data: ImageNet-1k</li>
+  </ul>
+  <ul>
+    <li>OoD data: </li>
+    <ul>
+      <li>NINCO</li>
+      <li>Textures</li>
+      <li>iNaturalist</li>
+    </ul>
+  </ul>
+</details>
 
 ### Perturbations
 The supported functional perturbations along with their hyperparameters are listed below. Please click on [this link](results/eval/severity_levels/perturbed_samples_demo) to see the perturbed images under different perturbations of 5 severity levels. We have uploaded the [corrupted datasets for CIFAR10](https://huggingface.co/datasets/dingw/corrupt_ood_cifar10) and [ImageNet-1k](https://huggingface.co/datasets/dingw/corrupt_ood_imagenet1k) benchmarks respectively in huggingface.
