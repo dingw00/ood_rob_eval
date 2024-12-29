@@ -80,65 +80,84 @@ A variety of DNN models are supported in our project.
     <td rowspan="4" align="center">WRN-40-2</td>
     <td align="center">NT</td>
     <td align="center">94.73</td>
-    <td align="left"><a href="https://gricad-gitlab.univ-grenoble-alpes.fr/dingw/ood_robustness_eva/-/raw/update/models/cifar10/state_dicts/wrn_40_2.pt?ref_type=heads&inline=false">wrn_40_2.pt</a></td>
+    <td align="left"><a href="https://github.com/dingw00/ood_rob_eval/blob/main/models/cifar10/state_dicts/wrn_40_2.pt">wrn_40_2.pt</a></td>
   </tr>
   <tr>
     <td align="center">DA</td>
     <td align="center">95.26</td>
-    <td align="left"><a href="https://gricad-gitlab.univ-grenoble-alpes.fr/dingw/ood_robustness_eva/-/raw/update/models/cifar10/state_dicts/wrn_40_2_default_aug.pt?ref_type=heads&inline=false">wrn_40_2_default_aug.pt</a></td>
+    <td align="left"><a href="https://github.com/dingw00/ood_rob_eval/blob/main/models/cifar10/state_dicts/wrn_40_2_default_aug.pt">wrn_40_2_default_aug.pt</a></td>
   </tr>
   <tr>
     <td align="center">AT</td>
     <td align="center">95.08</td>
-    <td align="left"><a href="https://gricad-gitlab.univ-grenoble-alpes.fr/dingw/ood_robustness_eva/-/raw/update/models/cifar10/state_dicts/wrn_40_2_Hendrycks2020AugMix.pt?ref_type=heads&inline=false">wrn_40_2_Hendrycks2020AugMix.pt</a></td>
+    <td align="left"><a href="https://github.com/dingw00/ood_rob_eval/blob/main/models/cifar10/state_dicts/wrn_40_2_Hendrycks2020AugMix.pt">wrn_40_2_Hendrycks2020AugMix.pt</a></td>
   </tr>
   <tr>
     <td align="center">PAT</td>
     <td align="center">84.95</td>
-    <td align="left"><a href="https://gricad-gitlab.univ-grenoble-alpes.fr/dingw/ood_robustness_eva/-/raw/update/models/cifar10/state_dicts/wrn_40_2_pat_0.25_epoch_199.pt?ref_type=heads&inline=false">wrn_40_2_pat_0.25_epoch_199.pt</a></td>
+    <td align="left"><a href="https://github.com/dingw00/ood_rob_eval/blob/main/models/cifar10/state_dicts/wrn_40_2_pat_0.25_epoch_199.pt">wrn_40_2_pat_0.25_epoch_199.pt</a></td>
   </tr>
   <tr>
     <td rowspan="4" align="center">ResNet50</td>
     <td align="center">NT</td>
     <td align="center">94.84</td>
-    <td align="left"><a href="https://gricad-gitlab.univ-grenoble-alpes.fr/dingw/ood_robustness_eva/-/raw/update/models/cifar10/state_dicts/resnet50.pt?ref_type=heads&inline=false">resnet50.pt</a></td>
+    <td align="left"><a href="https://github.com/dingw00/ood_rob_eval/blob/main/models/cifar10/state_dicts/resnet50.pt">resnet50.pt</a></td>
   </tr>
   <tr>
     <td align="center">DA</td>
     <td align="center">96.38</td>
-    <td align="left"><a href="https://gricad-gitlab.univ-grenoble-alpes.fr/dingw/ood_robustness_eva/-/raw/update/models/cifar10/state_dicts/resnet50_da_all_199.pt?ref_type=heads&inline=false">resnet50_da_all_199.pt</a></td>
+    <td align="left"><a href="https://github.com/dingw00/ood_rob_eval/blob/main/models/cifar10/state_dicts/resnet50_da_all_199.pt">resnet50_da_all_199.pt</a></td>
   </tr>
   <tr>
     <td align="center">AT</td>
     <td align="center">86.84</td>
-    <td align="left"><a href="https://gricad-gitlab.univ-grenoble-alpes.fr/dingw/ood_robustness_eva/-/raw/update/models/cifar10/state_dicts/resnet50_pgd_linf_8_pgd_l2_1_stadv_0.05_recoloradv_0.06_average.pt?ref_type=heads&inline=false">resnet50_pgd_..._average.pt</a></td>
+    <td align="left"><a href="https://github.com/dingw00/ood_rob_eval/blob/main/models/cifar10/state_dicts/resnet50_pgd_linf_8_pgd_l2_1_stadv_0.05_recoloradv_0.06_average.pt">resnet50_pgd_..._average.pt</a></td>
   </tr>
   <tr>
     <td align="center">PAT</td>
     <td align="center">82.41</td>
-    <td align="left"><a href="https://gricad-gitlab.univ-grenoble-alpes.fr/dingw/ood_robustness_eva/-/raw/update/models/cifar10/state_dicts/resnet50_pat_self_0.5.pt?ref_type=heads&inline=false">resnet50_pat_self_0.5.pt</a></td>
+    <td align="left"><a href="https://github.com/dingw00/ood_rob_eval/blob/main/models/cifar10/state_dicts/resnet50_pat_self_0.5.pt">resnet50_pat_self_0.5.pt</a></td>
   </tr>
   <tr>
     <td rowspan="4" align="center">ImageNet-100</td>
     <td rowspan="4" align="center">ResNet50</td>
     <td align="center">NT</td>
     <td align="center">88.78</td>
-    <td align="left"><a href="https://gricad-gitlab.univ-grenoble-alpes.fr/dingw/ood_robustness_eva/-/raw/update/models/imagenet100/state_dicts/resnet50.pt?ref_type=heads&inline=false">resnet50.pt</a></td>
+    <td align="left"><a href="https://github.com/dingw00/ood_rob_eval/blob/main/models/imagenet100/state_dicts/resnet50.pt">resnet50.pt</a></td>
   </tr>
   <tr>
     <td align="center">DA</td>
     <td align="center">89.92</td>
-    <td align="left"><a href="https://gricad-gitlab.univ-grenoble-alpes.fr/dingw/ood_robustness_eva/-/raw/update/models/imagenet100/state_dicts/resnet50_da_all_115.pt?ref_type=heads&inline=false">resnet50_da_all_115.pt</a></td>
+    <td align="left"><a href="https://github.com/dingw00/ood_rob_eval/blob/main/models/imagenet100/state_dicts/resnet50_da_all_115.pt">resnet50_da_all_115.pt</a></td>
   </tr>
   <tr>
     <td align="center">AT</td>
     <td align="center">78.75</td>
-    <td align="left"><a href="https://gricad-gitlab.univ-grenoble-alpes.fr/dingw/ood_robustness_eva/-/raw/update/models/imagenet100/state_dicts/resnet50_pgd_linf_4_pgd_l2_1200_jpeg_linf_0.125_stadv_0.05_recoloradv_0.06_random.pt?ref_type=heads&inline=false">resnet50_pgd_..._random.pt</a></td>
+    <td align="left"><a href="https://github.com/dingw00/ood_rob_eval/blob/main/models/imagenet100/state_dicts/resnet50_pgd_linf_4_pgd_l2_1200_jpeg_linf_0.125_stadv_0.05_recoloradv_0.06_random.pt">resnet50_pgd_..._random.pt</a></td>
   </tr>
   <tr>
     <td align="center">PAT</td>
     <td align="center">75.75</td>
-    <td align="left"><a href="https://gricad-gitlab.univ-grenoble-alpes.fr/dingw/ood_robustness_eva/-/raw/update/models/imagenet100/state_dicts/resnet50_pat_alexnet_0.5.pt?ref_type=heads&inline=false">resnet50_pat_alexnet_0.5.pt</a></td>
+    <td align="left"><a href="https://github.com/dingw00/ood_rob_eval/blob/main/models/imagenet100/state_dicts/resnet50_pat_alexnet_0.5.pt">resnet50_pat_alexnet_0.5.pt</a></td>
+  </tr>
+  <tr>
+    <td rowspan="3" align="center">ImageNet-1k</td>
+    <td align="center">SWIN</td>
+    <td align="center">NT</td>
+    <td align="center"> </td>
+    <td align="left">swin_base_patch4_window7_224</td>
+  </tr>
+  <tr>
+    <td align="center">DEIT</td>
+    <td align="center">NT</td>
+    <td align="center"> </td>
+    <td align="left">deit_base_patch16_224</td>
+  </tr>
+  <tr>
+    <td align="center">ViT</td>
+    <td align="center">NT</td>
+    <td align="center"> </td>
+    <td align="left">vit_b_16</td>
   </tr>
 </table>
 
@@ -151,7 +170,7 @@ Our benchmark is implemented with a variety of SoTA OoD detectors based on [Pyto
     <th align="center">Abbreviation</th>
   </tr>
   <tr>
-    <td rowspan="7" align="center">Uncertainty Quantification-<BR>Based</td>
+    <td rowspan="10" align="center">Uncertainty Quantification-<BR>Based</td>
     <td align="left">Maximum Softmax
 </td>
     <td align="center">MSP</td>
@@ -181,7 +200,19 @@ Our benchmark is implemented with a variety of SoTA OoD detectors based on [Pyto
     <td align="center">KLM</td>
   </tr>
   <tr>
-    <td rowspan="3" align="center">Distance-Based</td>
+    <td align="left">Monte Carlo Dropout</td>
+    <td align="center">MCD</td>
+  </tr>
+  <tr>
+    <td align="left">Activation Shaping</td>
+    <td align="center">ASH</td>
+  </tr>
+  <tr>
+    <td align="left">Rectified Activations</td>
+    <td align="center">ReAct</td>
+  </tr>
+  <tr>
+    <td rowspan="4" align="center">Distance-Based</td>
     <td align="left">Mahalanobis Distance</td>
     <td align="center">MD</td>
   </tr>
@@ -192,6 +223,10 @@ Our benchmark is implemented with a variety of SoTA OoD detectors based on [Pyto
   <tr>
     <td align="left">Simplified Hopfield Energy</td>
     <td align="center">SHE</td>
+  </tr>
+  <tr>
+    <td align="left">Nearest Neighbor</td>
+    <td align="center">KNN</td>
   </tr>
   <tr>
     <td align="center">Gradient-based</td>
@@ -239,7 +274,7 @@ Our benchmark is implemented with a variety of SoTA OoD detectors based on [Pyto
 
 
 ### Perturbations
-The supported functional perturbations along with their hyperparameters are listed here. Please click [this link](results/eval/severity_levels/perturbed_samples_demo) to see the perturbed images under different perturbations of 5 severity levels.
+The supported functional perturbations along with their hyperparameters are listed below. Please click on [this link](results/eval/severity_levels/perturbed_samples_demo) to see the perturbed images under different perturbations of 5 severity levels. We have uploaded the [corrupted datasets for CIFAR10](https://huggingface.co/datasets/dingw/corrupt_ood_cifar10) and [ImageNet-1k](https://huggingface.co/datasets/dingw/corrupt_ood_imagenet1k) benchmarks respectively in huggingface.
 <table>
   <tr>
     <th align="center">Group</th>
