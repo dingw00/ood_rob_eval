@@ -76,8 +76,8 @@ class Spatial(AttackerStep):
         trans_max, trans_min = 0, 0
         scale_max, scale_min = 0, 0
 
-        assert severity in [1, 2, 3, 4, 5, "all", "avg"]
-        if severity in ["all", "avg"]:
+        assert severity in [1, 2, 3, 4, 5, "all"]
+        if severity == "all":
             severity1 = 5
             severity0 = 1
         else:
@@ -148,9 +148,9 @@ class Color(AttackerStep):
         bright_max, bright_min = 0, 0
         cont_max, cont_min = 0, 0
 
-        assert severity in [1, 2, 3, 4, 5, "all", "avg"]
+        assert severity in [1, 2, 3, 4, 5, "all"]
         
-        if severity in ["all", "avg"]:
+        if severity == "all":
             severity1 = 5
             severity0 = 1
         else:
@@ -217,29 +217,24 @@ class Color(AttackerStep):
 
 class Blur(AttackerStep):
 
-    gau_size_dict = {"32x32": [5, 5, 7, 7, 9], "224x224": [9, 17, 25, 33, 49]}
-    gau_sigma_dict = {"32x32": [0, 0.4, 0.6, 0.7, 0.8, 1.0], "224x224": [0, 1, 2, 3, 4, 6]}
+    gau_size_dict = {"CIFAR10": [5, 5, 7, 7, 9], "Imagenet100": [9, 17, 25, 33, 49], "Imagenet1k": [9, 17, 25, 33, 49]}
+    gau_sigma_dict = {"CIFAR10": [0, 0.4, 0.6, 0.7, 0.8, 1.0], "Imagenet100": [0, 1, 2, 3, 4, 6], "Imagenet1k": [0, 1, 2, 3, 4, 6]}
     
-    def __init__(self, severity=5, img_size=32):
+    def __init__(self, severity=5, benchmark="CIFAR10"):
         
-        assert severity in [1, 2, 3, 4, 5, "all", "avg"]
+        assert severity in [1, 2, 3, 4, 5, "all"]
         super().__init__(severity=severity)
-        if severity in ["all", "avg"]:
+        if severity == "all":
             severity1 = 5
             severity0 = 1
         else:
             severity1 = severity
             severity0 = severity
-        
-        if img_size <= 64:
-            img_size_kw = "32x32"
-        else:
-            img_size_kw = "224x224"
 
-        gau_sigma_max = self.gau_sigma_dict[img_size_kw][severity1]
-        gau_sigma_min = self.gau_sigma_dict[img_size_kw][severity0-1]
+        gau_sigma_max = self.gau_sigma_dict[benchmark][severity1]
+        gau_sigma_min = self.gau_sigma_dict[benchmark][severity0-1]
 
-        self.gau_size = int(self.gau_size_dict[img_size_kw][severity1-1])
+        self.gau_size = int(self.gau_size_dict[benchmark][severity1-1])
         
         self.gau_sigma_max = float(gau_sigma_max)
         self.gau_sigma_min = float(gau_sigma_min)
@@ -264,26 +259,21 @@ class Blur(AttackerStep):
 # L-infinity threat model
 class LinfStep(AttackerStep):
 
-    eps_dict = {"32x32": [0,0.016,0.032,0.048,0.064,0.08], "224x224": [0,0.04,0.08,0.12,0.16,0.2]}
+    eps_dict = {"CIFAR10": [0,0.016,0.032,0.048,0.064,0.08], "Imagenet100": [0,0.04,0.08,0.12,0.16,0.2], "Imagenet1k": [0,0.04,0.08,0.12,0.16,0.2]}
 
-    def __init__(self, severity=5, img_size=32):
+    def __init__(self, severity=5, benchmark="CIFAR10"):
 
-        assert severity in [1, 2, 3, 4, 5, "all", "avg"]
+        assert severity in [1, 2, 3, 4, 5, "all"]
         super().__init__(severity=severity)
-        if severity in ["all", "avg"]:
+        if severity == "all":
             severity1 = 5
             severity0 = 1
         else:
             severity1 = severity
             severity0 = severity
-        
-        if img_size <= 64:
-            img_size_kw = "32x32"
-        else:
-            img_size_kw = "224x224"
 
-        eps_max = self.eps_dict[img_size_kw][severity1]
-        eps_min = self.eps_dict[img_size_kw][severity0-1]
+        eps_max = self.eps_dict[benchmark][severity1]
+        eps_min = self.eps_dict[benchmark][severity0-1]
 
         self.eps_max = float(eps_max)
         self.eps_min = float(eps_min)
@@ -305,23 +295,18 @@ class LinfStep(AttackerStep):
 # L2 threat model
 class L2Step(AttackerStep):
 
-    eps_dict = {"32x32": [0,0.8,1.6,2.4,3.2,4.0], "224x224": [0,16,32,48,64,80]}
+    eps_dict = {"CIFAR10": [0,0.8,1.6,2.4,3.2,4.0], "Imagenet100": [0,16,32,48,64,80], "Imagenet1k": [0,16,32,48,64,80]}
 
-    def __init__(self, severity=5, img_size=32):
+    def __init__(self, severity=5, benchmark="CIFAR10"):
         
-        assert severity in [1, 2, 3, 4, 5, "all", "avg"]
+        assert severity in [1, 2, 3, 4, 5, "all"]
         super().__init__(severity=severity)
-        if severity in ["all", "avg"]:
+        if severity == "all":
             severity1 = 3
         else:
             severity1 = severity
-        
-        if img_size <= 64:
-            img_size_kw = "32x32"
-        else:
-            img_size_kw = "224x224"
 
-        eps = self.eps_dict[img_size_kw][severity1]
+        eps = self.eps_dict[benchmark][severity1]
 
         self.eps = float(eps)
 
@@ -338,7 +323,7 @@ class L2Step(AttackerStep):
         return transformed.cpu()
 
 
-def build_attacker(perb_func, severity_level, img_size=32):
+def build_attacker(perb_func, severity_level, benchmark):
     if perb_func == "rotation":  
         attacker = Spatial(severity=severity_level, perturb_type="rotation")
     elif perb_func == "translation":
@@ -354,19 +339,19 @@ def build_attacker(perb_func, severity_level, img_size=32):
         attacker = Color(severity=severity_level, perturb_type="bright_contrast")
     
     elif perb_func == "blur":
-        attacker = Blur(severity=severity_level, img_size=img_size)
+        attacker = Blur(severity=severity_level, benchmark=benchmark)
     elif perb_func == "Linf":
-        attacker = LinfStep(severity=severity_level, img_size=img_size)
+        attacker = LinfStep(severity=severity_level, benchmark=benchmark)
     elif perb_func == "L2":
-        attacker = L2Step(severity=severity_level, img_size=img_size)
+        attacker = L2Step(severity=severity_level, benchmark=benchmark)
     else:
         raise NotImplementedError(f"Attack {perb_func} not implemented.")
         
     return attacker
 
-def build_attackers(perturb_functions, severity_level, img_size=32):
+def build_attackers(perturb_functions, severity_level, benchmark):
     attackers = dict()
     for perb_func in perturb_functions:
-        attacker = build_attacker(perb_func, severity_level, img_size=img_size)
+        attacker = build_attacker(perb_func, severity_level, benchmark)
         attackers[perb_func] = attacker
     return attackers

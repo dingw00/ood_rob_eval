@@ -3,10 +3,10 @@ This module calculates the model predictions, model confidence and OoD scores of
 and the perturbed samples, and saves the results in .csv files.
 """
 
+import torch
 import os
 import yaml
 import argparse
-import torch
 from utils.dataloader import load_dataset
 from models.model_utils import InputNormalizer, load_model
 from utils.ood_detectors import build_detectors
@@ -38,8 +38,7 @@ if __name__ == "__main__":
     for benchmark in configs["benchmark"]:
         n_classes = configs["benchmark"][benchmark]["num_classes"]
         ood_datasets = configs["benchmark"][benchmark]["ood_datasets"]
-        img_size = configs["benchmark"][benchmark]["img_size"]
-        
+
         for model_name in configs["benchmark"][benchmark]["model"]:
             for variant, weight_name in configs["benchmark"][benchmark]["model"][model_name].items():
 
@@ -53,19 +52,20 @@ if __name__ == "__main__":
                 print("Input Normalizer: Mean:",input_normalizer.mean.view(-1).numpy(), ", Std:", input_normalizer.std.view(-1).numpy())
 
                 # Load ID training dataset
-                id_train_data_set, id_train_data_loader = load_dataset(datadir, benchmark, img_size=img_size, benchmark=benchmark, 
-                                                                    split="train", batch_size=batch_size, normalize=True,
-                                                                    mean=input_normalizer.mean.view(-1), std=input_normalizer.std.view(-1),
-                                                                    model_name=model_name)
+                id_train_data_set, id_train_data_loader = load_dataset(datadir, benchmark, benchmark, 
+                                                    split="train", batch_size=batch_size, normalize=True,
+                                                    mean=input_normalizer.mean.view(-1), std=input_normalizer.std.view(-1),
+                                                    model_name=model_name)
+                
 
                 # Build OoD detectors
                 detectors = build_detectors(configs["score_functions"], model, input_normalizer, id_train_data_loader, 
                                             device=device)
 
                 # Build attackers
-                attackers = build_attackers(configs["perturb_functions"], severity_level=severity, img_size=img_size) 
+                attackers = build_attackers(configs["perturb_functions"], severity_level=severity, benchmark=benchmark)
 
-                datasets = [benchmark] + ood_datasets
+                datasets = [benchmark] + ood_datasets  # TODO
                 for dataset_name in datasets:
                     print("------------------------------------")
                     print("Dataset:", dataset_name)
@@ -75,8 +75,8 @@ if __name__ == "__main__":
                         os.makedirs(save_dir)
 
                     # Load dataset
-                    test_data_set, test_data_loader = load_dataset(datadir, dataset_name, img_size=img_size, 
-                                                                   benchmark=benchmark, split="test", batch_size=1)
+                    test_data_set, test_data_loader = load_dataset(datadir, dataset_name, benchmark, 
+                                                                    split="test", batch_size=1)
                     # Select seeds
                     data_set_ = test_data_set # [data_set[i] for i in range(len(y_all)) if (y_pred_all[i] == y_all[i])]
                     print("Size:", len(data_set_))
