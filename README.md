@@ -64,7 +64,7 @@ To evaluate the OoD robustness test results, please run
 ```
 make eval
 ```
-To visualize the OoD detectors' performance and robustness metrics, please refer to the `notebooks/` directory and execute the jupyter notebooks in an interactive window. The evaluations and visualizations will be saved in the `results/` directory.
+To visualize the OoD detectors' performance and robustness metrics, please refer to the `notebooks/` directory and execute the jupyter notebooks in an interactive window. The evaluations and visualizations will be saved in the `results/` directory. We have uploaded all our experiment results [here](https://figshare.com/s/64930a52878e3f21c4ae). 
 
 ## 📋 Descriptions <a name = "desc"></a>
 ### Models
