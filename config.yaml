@@ -41,7 +41,7 @@ benchmark:
         num_classes: 1000
         img_size: 224
         ood_datasets:
-            # - NINCO
+            - NINCO
             - Textures
             # - iNaturalist
         model:
@@ -54,18 +54,18 @@ benchmark:
 
 score_functions:
     # ============ No need fitting ===============
-    # - Entropy
-    # - MSP
-    # - EnergyBased
-    # - MaxLogit
-    # - ODIN
-    # - MCD
-    # - ReAct
+    - Entropy
+    - MSP
+    - EnergyBased
+    - MaxLogit
+    - ODIN
+    - MCD
+    - ReAct
     
     # ============ Need fitting ===============
     - KLMatching
-    # - KNN
-    # ----------> Need linear layer w & b - need modification for SWIN DeiT ViT models
+    - KNN
+    # ----------> Need linear layer w & b - need modifications in SWIN DeiT ViT models
     # - ViM
     # - SHE
     # - DICE
@@ -77,14 +77,14 @@ score_functions:
     # - ASH
 
 perturb_functions:
-    # - rotation
-    # - translation
-    # - scale
-    # - hue
-    # - saturation
-    # - bright_contrast
-    # - blur  
-    # - Linf
+    - rotation
+    - translation
+    - scale
+    - hue
+    - saturation
+    - bright_contrast
+    - blur  
+    - Linf
     - L2
 
 rand_seed: 0
@@ -97,4 +97,4 @@ severity: all
 eval_severity: False # True False
 
 datadir: dataset/
-device: cuda # cpu, cuda
+device: cpu # cpu, cuda
