@@ -11,7 +11,7 @@ import os
 import time
 from utils.dataloader import load_dataset
 from models.model_utils import InputNormalizer, load_model
-from utils.attack_steps import Spatial, Color, Blur, LinfStep, L2Step
+from utils.attackers import Spatial, Color, Blur, LinfStep, L2Step
 from utils.test_utils import setup_seed, cal_image_sim
 from utils.visualize import show_images, make_lrp_heatmap
 

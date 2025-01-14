@@ -89,7 +89,7 @@ def load_dataset(data_dir, dataset_name, benchmark, batch_size=1, split=None,
         dataset = load_dataset_from_folder(data_dir, dataset_name, transform=tfs, 
                                            split=split)
     if (dataset_name == "Imagenet1k") and (split == "train"):
-        subset_indices = torch.randperm(len(dataset))[:10000]
+        subset_indices = torch.randperm(len(dataset))[:50000]
         dataset = Subset(dataset, subset_indices)
         pin_memory = False
 

@@ -53,25 +53,25 @@ benchmark:
             #     NT: vit_b_16 # https://pytorch.org/vision/main/models/generated/torchvision.models.vit_b_16.html#torchvision.models.ViT_B_16_Weights
 
 score_functions:
-    # ============ No need fitting ===============
-    - Entropy
-    - MSP
-    - EnergyBased
-    - MaxLogit
-    - ODIN
-    - MCD
-    - ReAct
+    # # ============ No need fitting ===============
+    # - Entropy
+    # - MSP
+    # - EnergyBased
+    # - MaxLogit
+    # - ODIN
+    # - MCD
+    # - ReAct
     
-    # ============ Need fitting ===============
-    - KLMatching
-    - KNN
-    # ----------> Need linear layer w & b - need modifications in SWIN DeiT ViT models
+    # # ============ Need fitting ===============
+    # - KLMatching
+    # - KNN
+    # # ----------> Need linear layer w & b - need modifications in SWIN DeiT ViT models
     # - ViM
-    # - SHE
+    - SHE
     # - DICE
     # ----------> Fitting functions demanding for CPU & GPU memory, probabily not applicable for large dataset
-    # - Mahalanobis+ODIN
     # - Mahalanobis
+    # - Mahalanobis+ODIN
     # - RMD
     # ----------> Need BHWC feature space - not applicable for SWIN DeiT ViT models
     # - ASH
@@ -97,4 +97,4 @@ severity: all
 eval_severity: False # True False
 
 datadir: dataset/
-device: cpu # cpu, cuda
+device: cuda # cpu, cuda
